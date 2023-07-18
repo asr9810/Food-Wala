@@ -10,6 +10,8 @@ const RestaurantContainer = ({ filterquery }) => {
 
   useEffect(() => {
     getRestroData();
+    scrollHandler()
+    window.addEventListener('scroll', scrollHandler)
   }, []);
 
   // whenever searching the restaurant this will call
@@ -33,6 +35,10 @@ const RestaurantContainer = ({ filterquery }) => {
     setRestroData(Data?.data?.cards[2]?.data?.data?.cards);
     setFilterRestroDataList(Data?.data?.cards[2]?.data?.data?.cards);
   };
+
+  const scrollHandler=()=>{
+    console.log(window.scrollY)
+  }
   // console.log("restroData =>", restroData);
   // console.log('filterRestroData', filterRestroDataList)
 
