@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 
 const CartItems = ({data}) => {
+  const [cartCount, setCartCount] = useState(1)
+  cosnt
+  // const cartItems = useSelector((store=>store.cart.cartItems))
+
+  // const filterCartItem = cartItems.filter((item)=>())
 
   const {name, price } = data;
 
@@ -10,7 +17,7 @@ const CartItems = ({data}) => {
       <div className="menu-item-add">
         <div className="menu-item-add-box">
           <span className="minus">-</span>
-          <span className="int">0</span>
+          <span className="int">{cartCount}</span>
           <span className="plus">+</span>
         </div>
       </div>

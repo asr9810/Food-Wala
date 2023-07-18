@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import CartItems from "./CartItems";
 import restrocad from "../image/restoCard.jpg";
 import { useSelector } from "react-redux";
 import { imgUrl } from "../utility/config";
+import { current } from "@reduxjs/toolkit";
 
 const Cart = () => {
   const cartElement = useSelector((store)=>store.cart.cartItems)
+  const [cartItem, setCartItem] = useState(cartElement)
+
+  const sum = cartItem.reduce((accu, currentvalue)=>(accu+(currentvalue.price? currentvalue.price: currentvalue.defaultPrice)), 0)
 
   console.log(cartElement)
 
@@ -38,22 +42,20 @@ const Cart = () => {
               <h3>Bill Detail</h3>
               <div className="total-item-bill">
                 <p>Total Bill</p>
-                <span>&#8377;321</span>
+                <span>&#8377;{sum/100}</span>
               </div>
               <div className="delivery">
                 <div className="delivery-in-mtr">
                   <p>Devlivery Fee</p>
-                  <span>|</span>
-                  <span>28 Km</span>
                 </div>
-                <span>&#8377;36</span>
+                <span>Free</span>
               </div>
             </div>
           </div>
 
           <div className="to-pay">
             <h3>To Pay</h3>
-            <span>&#8377;357</span>
+            <span>&#8377;{sum/100}</span>
           </div>
         </div>
       </div>
