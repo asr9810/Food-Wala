@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 
 const CartItems = ({data}) => {
   const [cartCount, setCartCount] = useState(1)
-  cosnt
+  
   // const cartItems = useSelector((store=>store.cart.cartItems))
 
   // const filterCartItem = cartItems.filter((item)=>())
