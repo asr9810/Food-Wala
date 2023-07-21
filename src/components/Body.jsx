@@ -6,6 +6,7 @@ const Body = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [suggetionList, setSuggestionList] = useState([])
   const [filterData, setFilterData] = useState();
+  const [isFocus, setIsFocus] = useState(false)
  
 useEffect(()=>{
   getFoodSuggestion()
@@ -23,6 +24,12 @@ const getFoodSuggestion = async() =>{
     setFilterData(searchQuery)
   }
 // console.log(filterData)
+const handleFocus = () =>{
+  setIsFocus(true)
+}
+const handleBlur =()=> {
+  setIsFocus(false)
+}
 
   return (
     <div className='body-container'>
@@ -32,10 +39,10 @@ const getFoodSuggestion = async() =>{
             submitHandler();
             setSearchQuery("")
           }}>
-            <input type="text" placeholder='SEARCH YOUR MEAL' value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)} />
+            <input type="text" placeholder='SEARCH YOUR MEAL' value={searchQuery} onChange={(e)=>setSearchQuery(e.target.value)} onFocus={handleFocus} onBlur={handleBlur} />
             <button><TfiSearch className='svg-icon'/></button>
           </form>
-          {suggetionList == undefined ? null : <div className="suggest-list">
+          {isFocus && <div className="suggest-list">
             {suggetionList.map((item)=>(
               <p key={item}>{item}</p>
             ))}

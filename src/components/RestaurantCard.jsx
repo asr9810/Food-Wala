@@ -4,7 +4,7 @@ import { AiOutlineStar } from 'react-icons/ai';
 import { imgUrl } from "../utility/config";
 
 const RestaurantCard = ({data}) => {
-  const { cloudinaryImageId, name, cuisines, avgRating } = data?.data
+  const { cloudinaryImageId, name, cuisines, avgRating } = data?.data?.data
   
   return (
     <div className="restro-card">

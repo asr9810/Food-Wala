@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import "../src/Applayout.scss";
 
@@ -11,8 +11,9 @@ import Cart from "./components/Cart";
 import { useSelector } from "react-redux";
 import EmptyCart from "./components/EmptyCart";
 import Contact from "./components/Contact";
-import About from "./components/About";
+// import About from "./components/About";
 
+const About = lazy(()=>import("./components/About"))
 
 const Applayout = () => {
     
@@ -53,7 +54,7 @@ const appRouter = createBrowserRouter([
         },
         {
           path: "about",
-          element: <About/>
+          element: <Suspense fallback={<h2>wait for a second "page is Loading......"</h2>}><About/></Suspense>
         }
       ],
     },
