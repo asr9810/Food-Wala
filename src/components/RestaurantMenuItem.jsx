@@ -19,9 +19,9 @@ const RestaurantMenuItem = ({ data, restroId, restroName, restroImg, restroLocat
     defaultPrice,
     id,
   } = data?.card?.info;
-  console.log("restaurantMenuItemData", data);
-  console.log("restroid", restroId);
-  console.log('restaurantName', restroName)
+  // console.log("restaurantMenuItemData", data);
+  // console.log("restroid", restroId);
+  // console.log('restaurantName', restroName)
   return (
     <>
       <div className="veg-menu-item">

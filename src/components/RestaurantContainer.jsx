@@ -23,8 +23,8 @@ const RestaurantContainer = ({ filterquery }) => {
     //   window.removeEventListener('scroll', scrollHandler)
     // }
   }, []);
-   console.log("restroData",restroData)
-   console.log("filterRestroDataList", filterRestroDataList)
+  //  console.log("restroData",restroData)
+  //  console.log("filterRestroDataList", filterRestroDataList)
 
   // whenever searching the restaurant this will call
   useEffect(() => {
@@ -42,7 +42,7 @@ const RestaurantContainer = ({ filterquery }) => {
   const getRestroData = async () => {
     const res = await fetch(restroDataUr2);
     const Data = await res.json();
-    console.log("geting data from api",Data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    // console.log("geting data from api",Data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     setRestroData(Data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     setFilterRestroDataList(Data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
    
