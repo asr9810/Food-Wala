@@ -40,11 +40,11 @@ const RestaurantContainer = ({ filterquery }) => {
  
 
   const getRestroData = async () => {
-    const res = await fetch(`https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6126456&lng=77.2433578&offset=15&sortBy=RELEVANCE&pageType=SEE_ALL&page_type=DESKTOP_SEE_ALL_LISTING`);
+    const res = await fetch(restroDataUr2);
     const Data = await res.json();
-    console.log(Data?.data?.cards)
-    setRestroData(Data?.data?.cards)
-    setFilterRestroDataList(Data?.data?.cards)
+    console.log("geting data from api",Data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    setRestroData(Data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    setFilterRestroDataList(Data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
    
   };
 // this function find the scroll point location
@@ -77,8 +77,8 @@ const RestaurantContainer = ({ filterquery }) => {
     <div className="restro-container">
       {filterRestroDataList.map((item) => (
         <Link
-          to={`Restaurant/${item.data.data.id} `}
-          key={item.data.data.id}
+          to={`Restaurant/${item?.info?.id} `}
+          key={item?.info?.id}
           className="restrocard-link"
         >
           <RestaurantCard data={item} />

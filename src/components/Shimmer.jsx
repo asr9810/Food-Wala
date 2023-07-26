@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const ShimmerItem = () => (
   <div className="shimmer-container">
@@ -9,8 +9,19 @@ const ShimmerItem = () => (
 );
 
 const Shimmer = () => {
+  const [showInfo, setShowInfo] = useState(false)
+  useEffect(()=>{
+    const timer = setTimeout(()=>{
+      setShowInfo(true)
+    },5000)
+
+    return ()=>{
+      clearTimeout(timer)
+    }
+  })
   return (
     <div className="shimmer">
+      {showInfo && <h3>!Please download the Cors Extension and turn it On ....</h3>}
       {Array(8)
         .fill()
         .map((item, index) => (
@@ -19,5 +30,6 @@ const Shimmer = () => {
     </div>
   );
 };
+
 
 export default Shimmer;
